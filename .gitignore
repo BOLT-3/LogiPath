@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Generated translations
+*.translation
+
+# JetBrains Rider / IntelliJ
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

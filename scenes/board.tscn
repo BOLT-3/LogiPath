@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://byovby8y7vpij"]
+
+[ext_resource type="Script" uid="uid://jjxb3msmvl0n" path="res://scripts/board.gd" id="1_bw3vb"]
+[ext_resource type="Script" uid="uid://bay2ulvmfj3ds" path="res://scripts/cells_visual.gd" id="2_tx6nw"]
+
+[node name="Board" type="Node2D" unique_id=1982200795]
+script = ExtResource("1_bw3vb")
+
+[node name="CellsVisual" type="Node2D" parent="." unique_id=3776947]
+script = ExtResource("2_tx6nw")
