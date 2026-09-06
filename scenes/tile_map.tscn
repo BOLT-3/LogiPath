@@ -1,0 +1,27 @@
+[gd_scene format=4 uid="uid://dgetxytftjg16"]
+
+[ext_resource type="Script" uid="uid://c5ir8on73ojnd" path="res://scripts/test_board.gd" id="1_47enk"]
+[ext_resource type="Texture2D" uid="uid://cm1vnr17b14hr" path="res://assets/test_tile_sprite_64x64.png" id="1_tjuek"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n30v"]
+texture = ExtResource("1_tjuek")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3kgre"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_1n30v")
+
+[sub_resource type="GDScript" id="GDScript_7yhko"]
+script/source = "extends TileMapLayer
+
+var cell := TileMap
+"
+
+[node name="TileMap" type="Node2D" unique_id=409392135]
+script = ExtResource("1_47enk")
+
+[node name="Board" type="TileMapLayer" parent="." unique_id=1046024015]
+tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAADAAEAAAAAAAAAAAABAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_3kgre")
+script = SubResource("GDScript_7yhko")
