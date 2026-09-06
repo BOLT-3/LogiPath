@@ -1,0 +1,469 @@
+# Core path mechanics
+
+### 1. Start / End
+
+**What it does:**
+Defines the endpoints of the line. The player must create a continuous path from S to E, normally without self-intersection.
+
+**Good at:**
+
+* Establishing the basic objective.
+* Controlling where the path begins and finishes.
+* Creating natural route-selection puzzles.
+* Giving other mechanics something to constrain.
+
+**Best interaction:** **Walls**
+
+Walls turn the simple "get from S to E" problem into an actual routing puzzle.
+
+**Also excellent with:** Numbers, arrows, pips.
+
+---
+
+### 2. Walls
+
+**What it does:**
+Prevents the path from crossing certain edges/cells.
+
+**Good at:**
+
+* Restricting movement.
+* Creating corridors and bottlenecks.
+* Forcing the path into particular regions.
+* Making other clues more meaningful.
+
+Walls are probably your most fundamental *supporting* mechanic.
+
+**Best interaction:** **Pips**
+
+A wall can eliminate possible cells around a pip, turning something like:
+
+> "3 of these 4 cells must be filled"
+
+into an almost forced situation.
+
+**Also excellent with:** Numbers, arrows, altars, territory numbers.
+
+---
+
+# Local occupancy mechanics
+
+### 3. Pips
+
+**What it does:**
+A pip placed at the intersection/corner of four cells specifies how many of those four cells the path must occupy.
+
+1 → exactly one
+2 → exactly two
+3 → exactly three
+4 → all four
+
+**Good at:**
+
+* Local deduction.
+* Forcing path turns.
+* Controlling how much of a small area the path occupies.
+* Creating subtle constraints without directly specifying the route.
+
+This is probably one of your best **"small clue, big consequence"** mechanics.
+
+**Best interaction:** **Walls**
+
+Walls remove possibilities, while pips tell you how many possibilities must remain occupied.
+
+**Also excellent with:** Arrows, altars, blocks.
+
+---
+
+### 4. Colored Pips
+
+**What it does:**
+Same concept as pips, except the occupied cells must be distributed between specific colors.
+
+For example:
+
+> 2 red + 1 blue.
+
+**Good at:**
+
+* Controlling multiple paths locally.
+* Creating color-specific deductions.
+* Forcing paths to cross particular areas without explicitly drawing their route.
+
+**Best interaction:** **Multiple colored lines**
+
+That's essentially what makes the mechanic meaningful.
+
+**Also excellent with:** Colored walls and colored arrows.
+
+---
+
+# Order mechanics
+
+### 5. Numbers
+
+**What it does:**
+The line has to encounter numbered cells in chronological order.
+
+For example:
+
+**1 → 2 → 3 → 4**
+
+**Good at:**
+
+* Controlling *when* a cell is visited rather than merely whether it is visited.
+* Creating route ordering puzzles.
+* Forcing the player to think globally instead of locally.
+
+This is a really important mechanic because most of your other clues are spatial, whereas Numbers introduce a **temporal/order dimension**.
+
+**Best interaction:** **Arrows**
+
+An arrow can determine *how* you must enter/leave a numbered cell, while the number determines *when* you need to reach it.
+
+**Also excellent with:** Walls and multiple colors.
+
+---
+
+### 6. Colored Numbers
+
+**What it does:**
+Only a particular color can pass through the numbered cell, while that color still has to encounter its numbers in order.
+
+**Good at:**
+
+* Giving different paths independent objectives.
+* Creating cross-path dependencies.
+* Making multiple-line puzzles significantly more complicated.
+
+**Best interaction:** **Multiple colored lines**
+
+Again, the mechanic really shines when multiple independent sequences have to coexist.
+
+---
+
+# Direction mechanics
+
+### 7. Arrows
+
+**What it does:**
+When the path reaches the arrow, it must leave/move in the indicated direction and cannot enter from the arrow's pointing direction.
+
+**Good at:**
+
+* Controlling path direction.
+* Forcing turns.
+* Preventing otherwise-valid routes.
+* Creating one-cell-wide directional deductions.
+
+It's one of your strongest mechanics for **forcing the exact geometry of the path**.
+
+**Best interaction:** **Numbers**
+
+Numbers say:
+
+> "You need to visit this."
+
+Arrows say:
+
+> "And here's exactly how your path has to behave when you do."
+
+That's a very natural combination.
+
+**Also excellent with:** Pips, walls, altars.
+
+---
+
+### 8. Colored Arrows
+
+**What it does:**
+Same directional restriction, but only the designated color can interact with the arrow.
+
+**Good at:**
+
+* Controlling the geometry of one particular path.
+* Making multiple paths interact without physically intersecting.
+* Creating color-dependent routing.
+
+**Best interaction:** **Multiple colored lines**
+
+Obviously, but this can become particularly nasty when each color has its own directional constraints.
+
+---
+
+# Adjacency mechanics
+
+### 9. Altar
+
+**What it does:**
+Occupies a cell and requires a specific number of its four neighboring cells to contain the path.
+
+A `1` altar means exactly one adjacent path cell, etc.
+
+**Good at:**
+
+* Controlling the **boundary** of the path.
+* Creating constraints that don't require the path to actually visit the clue.
+* Forcing the path to pass near something.
+
+This makes it fundamentally different from pips.
+
+**Pip:**
+
+> "How many of these cells are occupied?"
+
+**Altar:**
+
+> "How many cells around me are occupied?"
+
+**Best interaction:** **Walls**
+
+Walls can make certain neighboring cells impossible, allowing altar requirements to force the remaining possibilities.
+
+**Also excellent with:** Arrows.
+
+---
+
+### 10. Advanced Altar
+
+**What it does:**
+Instead of saying "N adjacent cells," individual sides specify which color must occupy the adjacent cell.
+
+So it controls **exact adjacency and color simultaneously**.
+
+**Good at:**
+
+* Very precise local path shaping.
+* Forcing specific colored paths around an object.
+* Creating extremely strong local deductions.
+
+**Best interaction:** **Colored walls**
+
+A colored wall can determine which colored path is able to approach the altar, while the altar determines exactly where that path needs to be.
+
+**Also excellent with:** Colored pips.
+
+---
+
+# Topology / crossing mechanics
+
+### 11. Bridges
+
+**What it does:**
+Allows two path segments to occupy the same cell by passing over/under each other instead of intersecting.
+
+**Good at:**
+
+* Allowing otherwise impossible routes.
+* Creating controlled path crossings.
+* Increasing the complexity of multi-line puzzles.
+* Breaking the normal "one cell = one path segment" assumption.
+
+This is arguably your most **fundamentally different** path mechanic.
+
+**Best interaction:** **Multiple colored lines**
+
+Two different paths being able to cross without connecting is where bridges become especially interesting.
+
+**Also potentially amazing with:** Territory mechanics—but this needs very carefully defined rules.
+
+---
+
+# Multi-path mechanics
+
+### 12. Multiple Colors / Multiple Lines
+
+**What it does:**
+Instead of one path, several colored paths must each connect their corresponding S/E endpoints without intersecting.
+
+**Good at:**
+
+* Creating global interactions.
+* Making every local constraint potentially affect another path.
+* Creating route conflicts.
+* Turning simple mechanics into much harder versions of themselves.
+
+This isn't really a single mechanic so much as a **complexity multiplier**.
+
+A pip that is easy with one path can become difficult when three colors need to divide its four cells.
+
+**Best interaction:** **Colored Pips**
+
+That's probably the most direct interaction.
+
+But as a *system*, it's excellent with basically everything.
+
+---
+
+# Territory mechanics
+
+This is where your game starts becoming particularly distinctive.
+
+---
+
+### 13. Blocks
+
+**What it does:**
+Polyomino-like pieces occupy multiple cells and must ultimately fit into the available non-path space.
+
+They can be placed before or after the path is created.
+
+Colored edges can additionally require particular block edges to be adjacent to a corresponding colored path.
+
+**Good at:**
+
+* Packing.
+* Shape recognition.
+* Planning empty space.
+* Indirectly restricting the path.
+* Making the player think about what remains rather than what they draw.
+
+This is a **reverse constraint**:
+
+Instead of:
+
+> "Don't put your line here."
+
+the block effectively says:
+
+> **"You'd better leave this space available."**
+
+**Best interaction:** **Territory Numbers**
+
+This is an *excellent* pairing.
+
+The territory number tells you how much empty space needs to exist, while the block tells you what shape needs to fit inside that space.
+
+Together they create:
+
+> **Area + geometry.**
+
+**Also excellent with:** X/O.
+
+---
+
+### 14. X & O
+
+**What it does:**
+X and O blocks/cells cannot coexist in the same connected region. The player's line must form an actual boundary separating them.
+
+**Good at:**
+
+* Region separation.
+* Connectivity reasoning.
+* Making the path act as a wall.
+* Forcing the player to think about the topology of the remaining space.
+
+This is the mechanic that most strongly changes the question from:
+
+> "Where does my line go?"
+
+to:
+
+> **"What regions will my line create?"**
+
+**Best interaction:** **Territory Numbers**
+
+Because now you need to create regions that are simultaneously:
+
+* separate,
+* connected appropriately,
+* and the correct size.
+
+**Also excellent with:** Blocks.
+
+---
+
+### 15. Territory Number
+
+**What it does:**
+The connected empty region containing the number must contain exactly that many empty cells. Blocks don't count toward the empty-space total.
+
+**Good at:**
+
+* Area calculation.
+* Region sizing.
+* Controlling how much space the path encloses.
+* Creating global deductions from a small clue.
+
+This might actually be your strongest territory mechanic because it interacts with almost everything.
+
+**Best interaction:** **Blocks**
+
+The combination is extremely natural:
+
+> "This region needs 12 empty cells."
+
+and
+
+> "This 5-cell shape has to fit inside it."
+
+Now the player has to reason about both **quantity and arrangement**.
+
+**Also excellent with:** X/O.
+
+---
+
+# Quartrets
+
+### 16. Quartrets
+
+**What it does:**
+Like a pip, but instead of simply counting occupied cells, the 2×2 area tracks how much of it must belong to particular colors.
+
+So you can express local color distributions.
+
+**Good at:**
+
+* Fine-grained color distribution.
+* Controlling exactly where multiple paths need to occupy a small area.
+* Creating local multi-color deductions.
+
+**Best interaction:** **Colored Pips**
+
+They occupy almost the same design space, so combining them lets you create progressively more complicated local color constraints.
+
+But I'd actually be careful about how visually distinct they are. You want the player to immediately understand:
+
+> "This is about four cells and their color distribution."
+
+rather than having to memorize arbitrary symbols.
+
+---
+
+# If I had to rank their "specialties"
+
+| Mechanic             | Best at                   |
+| -------------------- | ------------------------- |
+| **Walls**            | Restricting movement      |
+| **Pips**             | Local occupancy deduction |
+| **Numbers**          | Visit order               |
+| **Arrows**           | Direction                 |
+| **Altar**            | Local adjacency           |
+| **Advanced Altar**   | Exact colored adjacency   |
+| **Bridges**          | Path topology/crossing    |
+| **Multiple Colors**  | Global path interaction   |
+| **Quartrets**        | Local color distribution  |
+| **Blocks**           | Shape/packing             |
+| **X/O**              | Region separation         |
+| **Territory Number** | Region size               |
+
+And there's a really nice pattern here:
+
+**Walls → where can I go?**
+**Pips → how much must I occupy?**
+**Numbers → when do I go there?**
+**Arrows → which way do I go?**
+**Altars → how close must I be?**
+**Colors → who can go there?**
+**Bridges → can paths overlap?**
+**Blocks → what space must remain?**
+**X/O → what regions must remain separate?**
+**Territory numbers → how large must those regions be?**
+
+That's a surprisingly comprehensive constraint vocabulary.
+
+And I'd say **Blocks, X/O, and Territory Numbers are the three that give your game its strongest unique identity**, because they extend the puzzle from *drawing a path* into *engineering the space that the path creates*.
+
+
+# 6/9/2026 -10:18 IST
