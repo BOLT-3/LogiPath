@@ -1,7 +1,7 @@
 extends Node2D
 
 const GRID_SIZE := 8
-const CELL_SIZE := 80
+const CELL_SIZE := 80.0
 
 var cells: Dictionary = {}
 
@@ -21,9 +21,16 @@ func create_board() -> void:
 
 
 func _draw() -> void:
+	var viewport_size := get_viewport_rect().size
+
+	# Center the entire 8x8 board
+	var board_size := GRID_SIZE * CELL_SIZE
+	var offset := (viewport_size - Vector2(board_size, board_size)) / 2.0
+
 	for y in range(GRID_SIZE):
 		for x in range(GRID_SIZE):
-			var pos := Vector2(
+
+			var pos := offset + Vector2(
 				x * CELL_SIZE,
 				y * CELL_SIZE
 			)
@@ -38,7 +45,7 @@ func _draw() -> void:
 				Vector2(CELL_SIZE - 6, CELL_SIZE - 6)
 			)
 
-			# Dark gap between cells
+			# Dark gap
 			draw_rect(
 				outer,
 				Color("#0b111a")
@@ -50,7 +57,7 @@ func _draw() -> void:
 				Color("#253342")
 			)
 
-			# Slight inner surface
+			# Inner surface
 			draw_rect(
 				Rect2(
 					pos + Vector2(6, 6),
@@ -91,7 +98,9 @@ func _draw() -> void:
 				2.0
 			)
 
+
 func _unhandled_input(event: InputEvent) -> void:
+
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			handle_press(event.position)
@@ -109,7 +118,13 @@ func handle_press(screen_position: Vector2) -> void:
 
 
 func screen_to_cell(screen_position: Vector2) -> Vector2i:
-	var local_position := to_local(screen_position)
+	var viewport_size := get_viewport_rect().size
+	var board_size := GRID_SIZE * CELL_SIZE
+
+	# Same offset used when drawing
+	var offset := (viewport_size - Vector2(board_size, board_size)) / 2.0
+
+	var local_position := screen_position - offset
 
 	return Vector2i(
 		floori(local_position.x / CELL_SIZE),

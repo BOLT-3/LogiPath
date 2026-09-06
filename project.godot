@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Line Puzzle"
-run/main_scene="uid://bstbeogapnuod"
+run/main_scene="uid://c6hqw8m8ytp56"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=1920
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
