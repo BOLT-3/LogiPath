@@ -1,30 +1,95 @@
 extends Node2D
 
-const BOARD_SIZE := 8
-
-@onready var tile_map: TileMapLayer = $TileMapLayer
+const GRID_SIZE := 8
+const CELL_SIZE := 80
 
 var cells: Dictionary = {}
 
 
 func _ready() -> void:
 	create_board()
+	queue_redraw()
 
 
 func create_board() -> void:
-	tile_map.clear()
 	cells.clear()
 
-	for y in range(BOARD_SIZE):
-		for x in range(BOARD_SIZE):
-			var position := Vector2i(x, y)
+	for y in range(GRID_SIZE):
+		for x in range(GRID_SIZE):
+			var cell_pos := Vector2i(x, y)
+			cells[cell_pos] = true
 
-			cells[position] = Cell.new(position)
 
-			# source_id = 0
-			# atlas_coords = (0, 0)
-			tile_map.set_cell(position, 0, Vector2i(0, 0))
+func _draw() -> void:
+	for y in range(GRID_SIZE):
+		for x in range(GRID_SIZE):
+			var pos := Vector2(
+				x * CELL_SIZE,
+				y * CELL_SIZE
+			)
 
+			var outer := Rect2(
+				pos,
+				Vector2(CELL_SIZE, CELL_SIZE)
+			)
+
+			var inner := Rect2(
+				pos + Vector2(3, 3),
+				Vector2(CELL_SIZE - 6, CELL_SIZE - 6)
+			)
+
+			# Dark gap between cells
+			draw_rect(
+				outer,
+				Color("#0b111a")
+			)
+
+			# Main tile
+			draw_rect(
+				inner,
+				Color("#253342")
+			)
+
+			# Slight inner surface
+			draw_rect(
+				Rect2(
+					pos + Vector2(6, 6),
+					Vector2(CELL_SIZE - 12, CELL_SIZE - 12)
+				),
+				Color("#2b3b4c")
+			)
+
+			# Top highlight
+			draw_line(
+				pos + Vector2(6, 6),
+				pos + Vector2(CELL_SIZE - 6, 6),
+				Color("#607589"),
+				2.0
+			)
+
+			# Left highlight
+			draw_line(
+				pos + Vector2(6, 6),
+				pos + Vector2(6, CELL_SIZE - 6),
+				Color("#52687c"),
+				2.0
+			)
+
+			# Bottom shadow
+			draw_line(
+				pos + Vector2(6, CELL_SIZE - 6),
+				pos + Vector2(CELL_SIZE - 6, CELL_SIZE - 6),
+				Color("#111b26"),
+				2.0
+			)
+
+			# Right shadow
+			draw_line(
+				pos + Vector2(CELL_SIZE - 6, 6),
+				pos + Vector2(CELL_SIZE - 6, CELL_SIZE - 6),
+				Color("#111b26"),
+				2.0
+			)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -44,5 +109,9 @@ func handle_press(screen_position: Vector2) -> void:
 
 
 func screen_to_cell(screen_position: Vector2) -> Vector2i:
-	var local_position := tile_map.to_local(screen_position)
-	return tile_map.local_to_map(local_position)
+	var local_position := to_local(screen_position)
+
+	return Vector2i(
+		floori(local_position.x / CELL_SIZE),
+		floori(local_position.y / CELL_SIZE)
+	)
