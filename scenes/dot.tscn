@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://bp7r82pi7ditg"]
 
 [ext_resource type="Script" uid="uid://bjb5kkrbdur4g" path="res://scripts/dot.gd" id="1_1c7to"]
-[ext_resource type="Texture2D" uid="uid://ekx7wi7tbv6e" path="res://assets/dot.png" id="2_1fxdc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4igg"]
+load_path = "res://.godot/imported/dot.png-8f4927301bfe25b36ae6b38c2d837062.ctex"
 
 [node name="Dot" type="Node2D" unique_id=1756103243]
 position = Vector2(25, 23)
 script = ExtResource("1_1c7to")
 
 [node name="ColorDot" type="Sprite2D" parent="." unique_id=1022857668]
-texture = ExtResource("2_1fxdc")
+texture = SubResource("CompressedTexture2D_c4igg")
 
 [node name="Label" type="Label" parent="." unique_id=639332186]
 offset_left = -20.0

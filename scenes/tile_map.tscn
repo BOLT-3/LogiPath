@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5ir8on73ojnd" path="res://scripts/test_board.gd" id="1_47enk"]
 [ext_resource type="Texture2D" uid="uid://c7ua6hkgn4ssv" path="res://assets/tile_sheet_128x128.png" id="2_47enk"]
+[ext_resource type="Texture2D" uid="uid://boyuvvrpcbow8" path="res://assets/red_dot_128x128.png" id="3_jx7lj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx7lj"]
 texture = ExtResource("2_47enk")
@@ -110,9 +111,43 @@ terrain_set_0/terrain_0/name = "Cells"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_jx7lj")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dohrl"]
+texture = ExtResource("3_jx7lj")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+4:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3kgre"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_dohrl")
+
 [node name="TileMap" type="Node2D" unique_id=409392135]
 script = ExtResource("1_47enk")
 
 [node name="Board" type="TileMapLayer" parent="." unique_id=580216497]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAEAAAACAAEAAAAEAAEAAAABAAEAAAADAAEAAAABAAIAAAACAAEAAAABAAIAAAABAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAACAAEAAAABAAMAAAACAAIAAAAAAAMAAAAAAAIAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAGAAIAAAABAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAIAAAAGAAMAAAABAAIAAAAFAAQAAAACAAEAAAAEAAQAAAABAAEAAAAEAAUAAAAAAAIAAAAFAAUAAAACAAIAAAADAAQAAAABAAQAAAACAAQAAAAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAEAAAACAAEAAAAEAAEAAAABAAEAAAADAAEAAAABAAIAAAACAAEAAAABAAIAAAABAAEAAAABAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAACAAEAAAABAAMAAAACAAIAAAAAAAMAAAAAAAIAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAGAAIAAAABAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAEAAAAGAAMAAAABAAEAAAAFAAQAAAABAAEAAAAEAAQAAAABAAEAAAAEAAUAAAAAAAIAAAAFAAUAAAABAAIAAAADAAQAAAABAAQAAAACAAQAAAAAAAQAAAAGAAQAAAABAAEAAAAHAAQAAAACAAEAAAAHAAUAAAACAAIAAAAGAAUAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_h54ee")
+
+[node name="Line" type="TileMapLayer" parent="." unique_id=1256420432]
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAEAAAAAAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_3kgre")
+
+[node name="BoardModel" type="Node2D" parent="." unique_id=1693051820]
