@@ -47,6 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				dragging = false
 				return
 
+			clear_line_state()
 			path = [cell]
 
 			print("pressed ", cell)
@@ -114,6 +115,7 @@ func add_cell(cell_position: Vector2i):
 
 
 func update_path_cells():
+	clear_line_state()
 
 	for i in range(path.size()):
 
@@ -155,11 +157,19 @@ func update_path_cells():
 		render_line_cell(cell)
 
 
+func clear_line_state():
+	line.clear()
+
+	for cell: LogiCell in board_model.cells_by_position.values():
+		cell.line_color = LogiCell.ColorType.NONE
+		cell.line_mask = 0
+
+
 func render_line_cell(cell: LogiCell):
 	var position := cell.board_position
 
 	# Nothing to draw.
-	if cell.line_color == LogiCell.ColorType.NONE:
+	if cell.line_color == LogiCell.ColorType.NONE or cell.line_mask == 0:
 		line.erase_cell(position)
 		return
 

@@ -1,7 +1,7 @@
 extends Node2D
 
 const CELL_COLOR := Color(0.85, 0.85, 0.85)
-const LINE_COLOR := Color(0.2, 0.2, 0.2)
+const LINE_COLOR := Color(0.772, 0.055, 0.429, 1.0)
 
 var board
 

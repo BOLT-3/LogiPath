@@ -481,7 +481,7 @@ func get_levels() -> Array[String]:
 
 	while file_name != "":
 		if not dir.current_is_dir():
-			if file_name.ends_with(".tscn"):
+			if file_name.ends_with(".tscn") and file_name != "level_01.tscn":
 				levels.append(
 					LEVELS_PATH + "/" + file_name
 				)

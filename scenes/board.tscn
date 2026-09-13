@@ -2,35 +2,9 @@
 
 [ext_resource type="Script" uid="uid://jjxb3msmvl0n" path="res://scripts/board.gd" id="1_bw3vb"]
 [ext_resource type="Script" uid="uid://bay2ulvmfj3ds" path="res://scripts/cells_visual.gd" id="2_tx6nw"]
-[ext_resource type="Texture2D" uid="uid://dokyjntg6s83k" path="res://assets/tilesettexture.png" id="3_nglv8"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nglv8"]
-texture = ExtResource("3_nglv8")
-texture_region_size = Vector2i(80, 80)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-3:0/next_alternative_id = 4
-3:0/0 = 0
-3:0/1 = 1
-3:0/2 = 2
-3:0/3 = 3
 
 [sub_resource type="TileSet" id="TileSet_ugjac"]
 tile_size = Vector2i(80, 80)
-sources/2 = SubResource("TileSetAtlasSource_nglv8")
 
 [node name="Board" type="Node2D" unique_id=1982200795]
 script = ExtResource("1_bw3vb")

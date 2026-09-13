@@ -47,7 +47,7 @@ func _draw() -> void:
 			# Main tile
 			draw_rect(
 				inner,
-				Color("#253342")
+				Color("05006aff")
 			)
 
 			# Slight inner surface
@@ -56,14 +56,14 @@ func _draw() -> void:
 					pos + Vector2(6, 6),
 					Vector2(CELL_SIZE - 12, CELL_SIZE - 12)
 				),
-				Color("#2b3b4c")
+				Color("010020ff")
 			)
 
 			# Top highlight
 			draw_line(
 				pos + Vector2(6, 6),
 				pos + Vector2(CELL_SIZE - 6, 6),
-				Color("#607589"),
+				Color("002839ff"),
 				2.0
 			)
 
@@ -71,7 +71,7 @@ func _draw() -> void:
 			draw_line(
 				pos + Vector2(6, 6),
 				pos + Vector2(6, CELL_SIZE - 6),
-				Color("#52687c"),
+				Color("00409dff"),
 				2.0
 			)
 
