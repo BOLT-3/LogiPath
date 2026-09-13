@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c5ir8on73ojnd" path="res://scripts/test_board.gd" id="1_47enk"]
 [ext_resource type="Texture2D" uid="uid://c7ua6hkgn4ssv" path="res://assets/tile_sheet_128x128.png" id="2_47enk"]
 [ext_resource type="Texture2D" uid="uid://boyuvvrpcbow8" path="res://assets/red_dot_128x128.png" id="3_jx7lj"]
+[ext_resource type="Script" uid="uid://ka5b4x5sv7r4" path="res://scripts/board_model.gd" id="4_dohrl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx7lj"]
 texture = ExtResource("2_47enk")
@@ -151,3 +152,4 @@ tile_map_data = PackedByteArray("AAAFAAIAAAAAAAEAAAAAAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3kgre")
 
 [node name="BoardModel" type="Node2D" parent="." unique_id=1693051820]
+script = ExtResource("4_dohrl")
